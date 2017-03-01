@@ -28,5 +28,25 @@ module FarMar
       target
     end
 
+    def self.by_market(mkt_id)
+      all.select { |vendor| vendor.market_id == mkt_id }
+    end
+
+    def market
+      Market.find(@market_id)
+    end
+
+    def products
+      Product.all.select { |product| product.vendor_id == @id }
+    end
+
+    def sales
+      Sale.all.select { |sale| sale.vendor_id == @id }
+    end
+
+    def revenue
+      sales.map { |sale| sale.amount }.reduce(:+)
+    end
+
   end
 end

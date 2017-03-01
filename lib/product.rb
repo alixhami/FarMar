@@ -1,7 +1,7 @@
 module FarMar
   class Product
 
-    attr_reader :id, :name
+    attr_reader :id, :name, :vendor_id
 
     def initialize(product_info)
       @id = product_info[:id].to_i
@@ -14,7 +14,7 @@ module FarMar
         Product.new(
           id: line[0],
           name: line[1],
-          vendor_id: line[3],
+          vendor_id: line[2],
         )
       end
     end
