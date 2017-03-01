@@ -1,7 +1,7 @@
 module FarMar
   class Sale
 
-    attr_reader :id, :amount, :vendor_id, :product_id
+    attr_reader :id, :amount, :purchase_time, :vendor_id, :product_id
 
     def initialize(sale_info)
       @id = sale_info[:id].to_i
@@ -16,7 +16,7 @@ module FarMar
         Sale.new(
           id: line[0],
           amount: line[1],
-          purchase_time: line[2],
+          purchase_time: DateTime.parse(line[2]),
           vendor_id: line[3],
           product_id: line[4]
         )
@@ -28,6 +28,18 @@ module FarMar
 
       raise ArgumentError.new("Invalid sale ID.") if target.nil?
       target
+    end
+
+    def self.between(beginning_time, end_time)
+      all.select { |sale| sale.purchase_time.between?(beginning_time, end_time) }
+    end
+
+    def vendor
+      Vendor.find(@vendor_id)
+    end
+
+    def product
+      Product.find(@product_id)
     end
 
   end
