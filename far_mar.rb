@@ -1,7 +1,8 @@
 require 'csv'
+require 'date'
 
 module FarMar; end
-require 'lib/farmar_market'
-require 'lib/product'
-require 'lib/sale'
-require 'lib/vendor'
+require_relative 'lib/farmar_market'
+require_relative 'lib/product'
+require_relative 'lib/sale'
+require_relative 'lib/vendor'
