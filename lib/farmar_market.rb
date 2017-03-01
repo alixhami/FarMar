@@ -34,5 +34,9 @@ module FarMar
       target
     end
 
+    def vendors
+      Vendor.all.select { |vendor| vendor.market_id == @id }
+    end
+
   end
 end

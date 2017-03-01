@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe FarMar::Sale do
 
-  describe "#all" do
+  describe "self.all" do
     before do
       @all_sales = FarMar::Sale.all
     end
@@ -21,7 +21,7 @@ describe FarMar::Sale do
     end
   end
 
-  describe "#find" do
+  describe "self.find" do
     it "Finds a sale that exists" do
       FarMar::Sale.find(9868).amount.must_equal 70.94
     end

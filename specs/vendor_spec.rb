@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe FarMar::Vendor do
 
-  describe "#all" do
+  describe "self.all" do
     before do
       @all_vendors = FarMar::Vendor.all
     end
@@ -21,7 +21,7 @@ describe FarMar::Vendor do
     end
   end
 
-  describe "#find" do
+  describe "self.find" do
     it "Finds a vendor that exists" do
       FarMar::Vendor.find(1120).name.must_equal "Walker-Corwin"
     end

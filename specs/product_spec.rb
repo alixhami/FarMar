@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe FarMar::Product do
 
-  describe "#all" do
+  describe "self.all" do
     before do
       @all_products = FarMar::Product.all
     end
@@ -21,7 +21,7 @@ describe FarMar::Product do
     end
   end
 
-  describe "#find" do
+  describe "self.find" do
     it "Finds a product that exists" do
       FarMar::Product.find(4160).name.must_equal "Prickly Beef"
     end

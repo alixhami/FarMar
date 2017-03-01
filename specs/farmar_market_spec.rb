@@ -2,7 +2,7 @@ require_relative 'spec_helper'
 
 describe FarMar::Market do
 
-  describe "#all" do
+  describe "self.all" do
     before do
       @all_markets = FarMar::Market.all
     end
@@ -21,7 +21,7 @@ describe FarMar::Market do
     end
   end
 
-  describe "#find" do
+  describe "self.find" do
     it "Finds a market that exists" do
       FarMar::Market.find(345).name.must_equal "Downtown Daytona Beach Farmers Market"
     end
@@ -33,4 +33,14 @@ describe FarMar::Market do
     end
   end
 
+  describe "#vendors" do
+    it "Returns an array of all vendors associated with a market instance" do
+      south_bend = FarMar::Market.find(495)
+
+      sb_vendors = south_bend.vendors
+      sb_vendors.length.must_equal 5
+      sb_vendors.collect { |vendor| vendor.id }.must_equal [2662, 2663, 2664, 2665, 2666]
+    end
+  end
+  
 end
