@@ -26,5 +26,21 @@ module FarMar
       target
     end
 
+    def self.by_vendor(vndr_id)
+      all.select { |product| product.vendor_id == vndr_id }
+    end
+
+    def vendor
+      Vendor.find(@vendor_id)
+    end
+
+    def sales
+      Sale.all.select { |sale| sale.product_id == @id }
+    end
+
+    def number_of_sales
+      sales.count
+    end
+
   end
 end
